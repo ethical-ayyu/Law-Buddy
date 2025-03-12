@@ -9,7 +9,115 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      case_events: {
+        Row: {
+          case_id: string | null
+          created_at: string | null
+          description: string | null
+          event_date: string
+          event_type: string
+          id: string
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          case_id?: string | null
+          created_at?: string | null
+          description?: string | null
+          event_date: string
+          event_type: string
+          id?: string
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          case_id?: string | null
+          created_at?: string | null
+          description?: string | null
+          event_date?: string
+          event_type?: string
+          id?: string
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "case_events_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "cases"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      case_notes: {
+        Row: {
+          case_id: string | null
+          content: string
+          created_at: string | null
+          id: string
+          updated_at: string | null
+        }
+        Insert: {
+          case_id?: string | null
+          content: string
+          created_at?: string | null
+          id?: string
+          updated_at?: string | null
+        }
+        Update: {
+          case_id?: string | null
+          content?: string
+          created_at?: string | null
+          id?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "case_notes_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "cases"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      cases: {
+        Row: {
+          case_number: string
+          client_name: string
+          created_at: string | null
+          description: string | null
+          id: string
+          next_deadline: string | null
+          status: string
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          case_number: string
+          client_name: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          next_deadline?: string | null
+          status: string
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          case_number?: string
+          client_name?: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          next_deadline?: string | null
+          status?: string
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
